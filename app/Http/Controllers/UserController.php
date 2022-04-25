@@ -26,4 +26,19 @@ class UserController extends Controller
 
         
     }
+    public function users_location($id) {
+        $result=User::where('id',$id)->get(['user_lattitude','user_longitude']);
+        //$tres=count($result);
+        // foreach($result as $res){
+           
+        //     $data[]=$res->email;
+        // }
+        return response()->json([
+            'status'=>200,
+            'location'=>$result
+            
+        ],200);
+
+        
+    }
 }

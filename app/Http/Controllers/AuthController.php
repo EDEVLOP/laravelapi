@@ -48,7 +48,9 @@ class AuthController extends Controller
         }
         $user = User::create(array_merge(
                     $validator->validated(),
-                    ['password' => bcrypt($request->password)]
+                    ['password' => bcrypt($request->password)],
+                    ['user_lattitude'=>$request->user_lattitude],
+                    ['user_longitude'=>$request->user_longitude],
                 ));
         return response()->json([
             'message' => 'User successfully registered',

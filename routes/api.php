@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Destination;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,5 +26,7 @@ Route::group([
     
 });
 Route::group(['middleware' => ['jwt.auth']], function () {
-    Route::get('/get_user', [UserController::class, 'users']);  
+    Route::get('/get_user', [UserController::class, 'users']);
+    Route::get('/get_user_location/{id}', [UserController::class, 'users_location']);
+    Route::get('/destination', [Destination::class, 'destination']);    
 });
